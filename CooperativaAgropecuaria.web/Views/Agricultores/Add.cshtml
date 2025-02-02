@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{
+    ViewData["Title"] = "Agregar Agricultor";
+}
+
+@model CooperativaAgropecuaria.web.Models.AddAgricultorViewModel
+
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Agregar Agricultor</h2>
+
+    <div class="card shadow-lg p-4">
+        <form method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" name="Nombre" class="form-control" asp-for="Nombre" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="tamanoCampo" class="form-label">Tamaño del Campo:</label>
+                <input type="text" id="tamanoCampo" name="TamanoCampo" class="form-control" asp-for="TamanoCampo" required />
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

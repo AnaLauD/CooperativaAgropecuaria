@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model CooperativaAgropecuaria.web.Models.RegistrarUsoMaquinariaViewModel
+
+@{
+    ViewData["Title"] = "Registrar Uso de Maquinaria";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Registrar Uso de Maquinaria</h2>
+
+    <form asp-action="Register" method="post" class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <label asp-for="MaquinariaId" class="form-label">Seleccionar Máquina</label>
+            <select asp-for="MaquinariaId" asp-items="Model.Maquinarias" class="form-select" required>
+                <option value="">Seleccione una máquina</option>
+            </select>
+            <span asp-validation-for="MaquinariaId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AgricultorId" class="form-label">Seleccionar Agricultor</label>
+            <select asp-for="AgricultorId" asp-items="Model.Agricultores" class="form-select" required>
+                <option value="">Seleccione un agricultor</option>
+            </select>
+            <span asp-validation-for="AgricultorId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="HorasUso" class="form-label">Horas de Uso</label>
+            <input asp-for="HorasUso" type="number" step="0.1" class="form-control" required />
+            <span asp-validation-for="HorasUso" class="text-danger"></span>
+        </div>
+
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <a asp-action="List" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<CooperativaAgropecuaria.web.Models.Entities.UsoMaquinaria>
+
+@{
+    ViewData["Title"] = "Listado de Usos de Maquinaria";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Listado de Usos de Maquinaria</h2>
+
+    <div class="text-center mt-3">
+        <a asp-action="Register" class="btn btn-primary">Registrar Uso</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Máquina</th>
+                <th>Agricultor</th>
+                <th>Horas de Uso</th>
+                <th>Costo Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var uso in Model)
+            {
+                <tr>
+                    <td>@uso.Maquinaria.Nombre</td>
+                    <td>@uso.Agricultor.Nombre</td>
+                    <td>@uso.HorasUso</td>
+                    <td>@uso.CostoTotal.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

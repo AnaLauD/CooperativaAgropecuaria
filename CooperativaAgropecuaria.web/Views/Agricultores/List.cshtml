@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<CooperativaAgropecuaria.web.Models.Entities.Agricultor>
+
+@{
+    ViewData["Title"] = "Lista de Agricultores";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Lista de Agricultores</h2>
+    <div class="d-flex justify-content-center mt-3">
+        <a class="btn btn-primary" asp-controller="Agricultores" asp-action="Add">Ingresar Agricultor</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre del Campo</th>
+                    <th scope="col">Tamaño del Campo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var agricultor in Model)
+                    {
+                        <tr>
+                            <td>@agricultor.Id</td>
+                            <td>@agricultor.Nombre</td>
+                            <td>@agricultor.TamanoCampo</td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="Agricultores" asp-action="Edit" asp-route-id="@agricultor.Id">Editar</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">No hay agricultores registrados</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

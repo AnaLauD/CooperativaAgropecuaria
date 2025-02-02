@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CooperativaAgropecuaria.web.Models.Entities.Maquinaria
+
+@{
+    ViewData["Title"] = "Editar Maquinaria";
+    var agricultores = ViewBag.Agricultores as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Editar Maquinaria</h2>
+
+    <form asp-action="Edit" method="post" class="card p-4 shadow-sm">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label">Nombre de la Máquina</label>
+            <input asp-for="Nombre" class="form-control" required />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Tipo" class="form-label">Tipo de Máquina</label>
+            <input asp-for="Tipo" class="form-control" required />
+            <span asp-validation-for="Tipo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CostoHora" class="form-label">Costo por hora</label>
+            <input asp-for="CostoHora" class="form-control" required />
+            <span asp-validation-for="CostoHora" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AgricultorId" class="form-label">Seleccionar Agricultor</label>
+            @if (agricultores.Any())
+            {
+                <select asp-for="AgricultorId" asp-items="agricultores" class="form-select" required>
+                    <option value="">Seleccione un agricultor</option>
+                </select>
+            }
+            else
+            {
+                <p class="text-danger">No hay agricultores disponibles.</p>
+            }
+            <span asp-validation-for="AgricultorId" class="text-danger"></span>
+        </div>
+
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-danger ms-3" asp-action="Delete" asp-controller="Maquinarias">Eliminar</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
